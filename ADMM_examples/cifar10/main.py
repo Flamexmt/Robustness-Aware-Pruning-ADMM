@@ -228,12 +228,6 @@ if __name__ == '__main__':
             # measure data loading time
             data_time.update(time.time() - end)
 
-            # adjust learning rate
-            if config.admm:
-                admm.admm_adjust_learning_rate(optimizer, epoch, config)
-            else:
-                scheduler.step()
-
             if config.gpu is not None:
                 input = input.cuda(config.gpu, non_blocking=True)
             target = target.cuda(config.gpu, non_blocking=True)
@@ -280,6 +274,11 @@ if __name__ == '__main__':
                                 name]  # returns boolean array called mask when weights are above treshhold
 
             optimizer.step()
+            # adjust learning rate
+            if config.admm:
+                admm.admm_adjust_learning_rate(optimizer, epoch, config)
+            else:
+                scheduler.step()
 
             # measure elapsed time
             batch_time.update(time.time() - end)

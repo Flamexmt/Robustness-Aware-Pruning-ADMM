@@ -74,7 +74,7 @@ pretrain:
  warmup_epochs: 
   0
  save_model: 
-  vgg16_pretrained.pt
+  vgg16_adversive_pretrained.pt
  optimizer:
   sgd
  lr_scheduler: 
@@ -85,9 +85,9 @@ admm:
  epochs: 
   5
  save_model: 
-  vgg16_admm.pt
+  vgg16_adversive_admm.pt
  load_model: 
-  vgg16_pretrained.pt
+  vgg16_adversive_pretrained.pt
  optimizer:
   sgd
  lr_scheduler: 
@@ -112,9 +112,9 @@ retrain:
  warmup_epochs: 
   0
  save_model: 
-  vgg16_retrained.pt
+  vgg16_adversive_retrained.pt
  load_model:
-  vgg16_admm.pt
+  vgg16_adversive_admm.pt
  optimizer: 
   sgd
  lr_scheduler:
